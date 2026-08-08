@@ -1,4 +1,4 @@
-<h1 align="center">Hi, I'm alt-f6 — Full-Stack Engineer & Freelance Consultant 🚀</h1>
+<h1 align="center">Hi, I'm alt-f6 - Full-Stack Engineer & Freelance Consultant 🚀</h1>
 
 <p align="center">
   <i>Building robust CRM/LMS platforms, automating business workflows, and delivering clean, scalable code.</i>
@@ -30,12 +30,8 @@ I balance my software engineering career with competitive, high-level sports.
 
 ## 📊 Developer Metrics
 <p align="center">
-  <img src="https://metrics.lecoq.io/alt-f6?template=classic&base.header=0&base.activity=0&lines=1" alt="GitHub Metrics" width="48%" />
+  <img src="https://metrics.lecoq.io/alt-f6?template=classic&base.header=0&base.activity=0&lines=1&config.theme=tokyonight" alt="GitHub Metrics" width="48%" />
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=alt-f6&theme=tokyonight&hide_border=true" alt="GitHub Streak" width="48%" />
-</p>
-
-<p align="center">
-  <img src="https://activity-graph.herokuapp.com/graph?username=alt-f6&theme=react-dark&hide_border=true&area=true" alt="Activity Graph" width="100%" />
 </p>
 
 ---
@@ -43,7 +39,7 @@ I balance my software engineering career with competitive, high-level sports.
 ## 📫 Let's Build Something Together
 Currently open for freelance projects, MVP development, and workflow automation tasks. 
 
-* 💬 **Telegram:** [@alt_f6](https://t.me/alt_f6) — *Fastest way to reach me.*
+* 💬 **Telegram:** [@hkbmna12](https://t.me/hkbmna12) - *Fastest way to reach me.*
 
 <p align="center">
   <i>"Code with logic, execute with discipline."</i>
