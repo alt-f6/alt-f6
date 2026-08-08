@@ -30,8 +30,12 @@ I balance my software engineering career with competitive, high-level sports.
 
 ## 📊 Developer Metrics
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=alt-f6&show_icons=true&hide_title=true&theme=tokyonight&cache_seconds=86400&v=1" alt="GitHub Stats" width="48%" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=alt-f6&layout=compact&theme=tokyonight&cache_seconds=86400&v=1" alt="Top Languages" width="48%" />
+  <img src="https://metrics.lecoq.io/alt-f6?template=classic&base.header=0&base.activity=0&lines=1" alt="GitHub Metrics" width="48%" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=alt-f6&theme=tokyonight&hide_border=true" alt="GitHub Streak" width="48%" />
+</p>
+
+<p align="center">
+  <img src="https://activity-graph.herokuapp.com/graph?username=alt-f6&theme=react-dark&hide_border=true&area=true" alt="Activity Graph" width="100%" />
 </p>
 
 ---
