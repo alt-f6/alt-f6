@@ -1,46 +1,38 @@
-<h1 align="center">Hi, I'm alt-f6 - Full-Stack Engineer & Freelance Consultant 🚀</h1>
+# Ismail Yusifli — Backend Engineer
 
-<p align="center">
-  <i>Building robust CRM/LMS platforms, automating business workflows, and delivering clean, scalable code.</i>
-</p>
+TypeScript · Python · PostgreSQL — payments, auth, integrations.
 
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=py,js,ts,nodejs,react,postgres,linux,docker,git,vscode" alt="Tech Stack Core" />
-</p>
+I build and run production backends end to end: schema design, concurrency, payment webhooks, auth and deployment. Since Sep 2025 I have been the sole engineer behind the platform of an online school with **300+ active students a month**, and I have shipped CRM, LMS and messaging systems for **3 external clients**.
 
----
+Open to a long-term remote contract (US/EU hours).
 
-## 💼 What I Do
-I specialize in helping businesses and entrepreneurs turn concepts into high-performance digital products. As an independent developer, I focus on project-based work, delivering results over "clocking in hours".
+## What I'm good at
 
-* 🏗️ **Custom Business Solutions:** Architecting and building custom **CRM systems**, **LMS platforms**, and high-load web applications from scratch.
-* ⚙️ **Process Automation:** Streamlining workflows using Webhooks, RESTful APIs, and custom Python/JS scripting.
-* ⚡ **Performance & Reliability:** Writing clean, maintainable code optimized for speed and scalability.
+- **Money that never goes wrong.** Race-safe balance debiting with PostgreSQL `SERIALIZABLE` transactions and `SELECT … FOR UPDATE` row locks; payment webhooks with timing-safe HMAC, IP allowlists, idempotency keys and server-side re-verification.
+- **Auth and access control.** Cross-subdomain SSO, RBAC, DB-backed rate limiting, anti-enumeration login, per-request checks on presigned storage URLs.
+- **Integrations.** Webhooks, REST APIs, messaging bots (Telegram, MAX), Google Sheets sync, payment providers.
+- **Tests that guard the business.** Vitest integration suites with business-invariant checks; strict TypeScript with zero `tsc` errors.
 
-## 🏒 The Athlete's Discipline
-I balance my software engineering career with competitive, high-level sports. 
-**What this means for my clients:** * **Zero missed deadlines.** The discipline required on the ice translates directly to my code. 
-* Extreme focus, resilience under pressure, and highly structured time management. I don't disappear; I deliver.
+## Selected work
 
-## 🛠️ Technical Arsenal
-* **Languages:** Python, JavaScript, TypeScript
-* **Backend & APIs:** Node.js, Express, Python frameworks, REST API integration
-* **Databases & DevOps:** PostgreSQL, MySQL, Linux Server Administration, Docker, Git
-* **Frontend:** Modern Web Interfaces, React (or preferred JS framework)
+| Project | What it shows | Stack |
+|---|---|---|
+| [cleanroom](https://github.com/alt-f6/cleanroom) | LLM trading agent built to survive prompt injection from untrusted financial text (Alpaca AI Trading Agents hackathon) | Python, FastAPI, Next.js |
+| [webhook-service-max](https://github.com/alt-f6/webhook-service-max) | Production webhook service syncing a client's CRM with MAX messenger | Python, FastAPI, aiogram |
+| [luxury-beauty-booking](https://github.com/alt-f6/luxury-beauty-booking) | Mobile-first booking web app for a hair-colorist studio | Next.js 15, TypeScript, Tailwind v4 |
 
-## 📊 Developer Metrics
-<p align="center">
-  <img src="https://metrics.lecoq.io/alt-f6?template=classic&base.header=0&base.activity=0&lines=1&config.theme=tokyonight" alt="GitHub Metrics" width="48%" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=alt-f6&theme=tokyonight&hide_border=true" alt="GitHub Streak" width="48%" />
-</p>
+## Stack
 
----
+**Backend:** TypeScript, Python, Node.js, Next.js (App Router, Server Actions), FastAPI, AsyncIO, REST, webhooks
+**Data:** PostgreSQL (isolation levels, row locks, indexing), Prisma, S3-compatible storage (Cloudflare R2)
+**Infra:** Docker, Ubuntu VPS, Caddy, systemd, Git
+**Testing:** Vitest (unit, integration, invariant tests)
 
-## 📫 Let's Build Something Together
-Currently open for freelance projects, MVP development, and workflow automation tasks. 
+## Contact
 
-* 💬 **Telegram:** [@hkbmna12](https://t.me/hkbmna12) - *Fastest way to reach me.*
+- Email: ismail.yusifli86@gmail.com
+- LinkedIn: [linkedin.com/in/ismail-yusifli](https://linkedin.com/in/ismail-yusifli)
+- Portfolio: [yusifli-portfolio.vercel.app](https://yusifli-portfolio.vercel.app)
+- Telegram: [@flames_8](https://t.me/flames_8)
 
-<p align="center">
-  <i>"Code with logic, execute with discipline."</i>
-</p>
+Outside of code I play competitive ice hockey.
