@@ -16,7 +16,7 @@ The school platform's code is private. These are the decisions I'm happy to walk
 
 | Problem | What I did |
 |---|---|
-| Two staff members marking the same lesson at the same moment must never charge a student twice | Balance debits run in `SERIALIZABLE` transactions with a `SELECT … FOR UPDATE` lock on the student row; a conflicting write waits or is rejected, never applied twice |
+| Two staff members marking the same lesson at the same moment must never charge a student twice | Debits lock the student row inside a transaction, so a conflicting write waits or is rejected, never applied twice. A review showed `SERIALIZABLE` + `FOR UPDATE` was aborting most concurrent writes, so I redesigned it around an explicit, deadlock-free lock order: see edtech-billing-core below |
 | A payment webhook can be forged, replayed or delivered twice | Timing-safe token check and the provider's IP allowlist; a unique idempotency key turns a duplicate delivery into a no-op (`P2002`); the payment is re-fetched from the provider's API before any balance changes |
 | Login timing can reveal which emails have accounts | Unknown emails still run a bcrypt compare against a dummy hash, so both paths cost the same; login rate limits live in Postgres and survive restarts |
 | Paid lessons must not leak through shared links | Lesson content is served only after a per-request enrollment check; storage access goes through short-lived presigned URLs |
@@ -28,7 +28,7 @@ The school platform's code is private. These are the decisions I'm happy to walk
 
 ## Public projects
 
-### [edtech-billing-core](https://github.com/alt-f6/edtech-billing-core) — the billing core above, open-sourced
+### [edtech-billing-core](https://github.com/alt-f6/edtech-billing-core) — the billing core above, extracted and redesigned
 The school platform's money logic extracted into a standalone library: an **append-only ledger** enforced by a database trigger, a deadlock-free lock order for concurrent attendance marking, and a payment webhook that re-verifies every payment with the provider. **104 integration tests** against real PostgreSQL, including deterministic concurrency interleavings and randomized ledger invariants that caught a real double-refund bug.
 `TypeScript` `PostgreSQL` `node-postgres` `Vitest` `GitHub Actions`
 
