@@ -20,7 +20,7 @@ The school platform's code is private. These are the decisions I'm happy to walk
 | A payment webhook can be forged, replayed or delivered twice | Timing-safe token check and the provider's IP allowlist; a unique idempotency key turns a duplicate delivery into a no-op (`P2002`); the payment is re-fetched from the provider's API before any balance changes |
 | Login timing can reveal which emails have accounts | Unknown emails still run a bcrypt compare against a dummy hash, so both paths cost the same; login rate limits live in Postgres and survive restarts |
 | Paid lessons must not leak through shared links | Lesson content is served only after a per-request enrollment check; storage access goes through short-lived presigned URLs |
-| Billing and payroll rules break silently | 1,495 automated tests across 194 files, plus a 24-check invariant audit over billing and payroll data |
+| Money rules break silently, not loudly | ~1,500 test cases across 194 test files, plus a 24-check suite that runs the real billing, payment, payroll and lead-conversion code against a live database and asserts the financial invariants |
 
 **Scale of that codebase:** ~80K lines of TypeScript and Python, 43 data models, 28 migrations, three apps (landing, CRM, LMS) behind one edge proxy with cross-subdomain SSO.
 
