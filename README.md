@@ -1,4 +1,4 @@
-# Ismail Yusifli
+# Ismail Iusifli
 
 **Backend engineer — TypeScript, Python, PostgreSQL.** I build the parts of a product that are expensive to get wrong: billing, payment webhooks, auth and integrations. Then I run them in production.
 
@@ -6,7 +6,7 @@
 - **External client, 2026:** a CRM + LMS now used by **25 staff across 3 branches** to manage 200+ students.
 - **Available now** for a long-term remote contract (US or EU hours), ideally on backend or product engineering at an early-stage startup.
 
-📧 ismail.yusifli86@gmail.com · [LinkedIn](https://linkedin.com/in/ismail-yusifli) · [Portfolio](https://yusifli-portfolio.vercel.app)
+📧 ismail.yusifli86@gmail.com · [LinkedIn](https://www.linkedin.com/in/ismail-iusifli) · [Portfolio](https://yusifli-portfolio.vercel.app)
 
 ---
 
@@ -27,6 +27,10 @@ The school platform's code is private. These are the decisions I'm happy to walk
 ---
 
 ## Public projects
+
+### [edtech-billing-core](https://github.com/alt-f6/edtech-billing-core) — the billing core above, open-sourced
+The school platform's money logic extracted into a standalone library: an **append-only ledger** enforced by a database trigger, a deadlock-free lock order for concurrent attendance marking, and a payment webhook that re-verifies every payment with the provider. **104 integration tests** against real PostgreSQL, including deterministic concurrency interleavings and randomized ledger invariants that caught a real double-refund bug.
+`TypeScript` `PostgreSQL` `node-postgres` `Vitest` `GitHub Actions`
 
 ### [cleanroom](https://github.com/alt-f6/cleanroom) — an AI trading agent that survives prompt injection
 Most defenses try to *detect* malicious text. cleanroom makes a successful injection useless instead: the only LLM in the pipeline has **no tools**, and the decision to trade or veto is **deterministic code** checking validated fields against market data. In the project's own benchmark, **0 of 15** hardened injection attacks produced an order, with 53 passing tests. Built for the Alpaca × lablab.ai AI Trading Agents hackathon.
