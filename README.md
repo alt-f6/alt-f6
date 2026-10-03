@@ -2,7 +2,7 @@
 
 **Backend engineer — TypeScript, Python, PostgreSQL.** I build the parts of a product that are expensive to get wrong: billing, payment webhooks, auth and integrations. Then I run them in production.
 
-- **Sole engineer** of the platform behind an online school with **300+ active students a month**: site, CRM, LMS and payments, live since Sep 2025.
+- **Sole engineer** of the platform behind an online school with **300+ active students a month**: site, CRM, LMS and payments, live since March 2026.
 - **External client, 2026:** a CRM + LMS now used by **25 staff across 3 branches** to manage 200+ students.
 - **Available now** for a long-term remote contract (US or EU hours), ideally on backend or product engineering at an early-stage startup.
 
