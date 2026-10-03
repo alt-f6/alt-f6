@@ -1,27 +1,42 @@
-# Ismail Yusifli — Backend Engineer
+# Ismail Yusifli
 
-TypeScript · Python · PostgreSQL — payments, auth, integrations.
+**Backend engineer — TypeScript, Python, PostgreSQL.** I build the parts of a product that are expensive to get wrong: billing, payment webhooks, auth and integrations. Then I run them in production.
 
-I build backends that handle money and concurrency correctly, and I run them in production. Since Sep 2025 I have been the sole engineer of the platform behind an online school with **300+ active students a month**: public site, CRM, LMS and payments. In 2026 I also built a CRM + LMS for an external client now used by **25 staff across 3 branches**.
+- **Sole engineer** of the platform behind an online school with **300+ active students a month**: site, CRM, LMS and payments, live since Sep 2025.
+- **External client, 2026:** a CRM + LMS now used by **25 staff across 3 branches** to manage 200+ students.
+- **Available now** for a long-term remote contract (US or EU hours), ideally on backend or product engineering at an early-stage startup.
 
-**Available now** for a long-term remote contract, US or EU hours.
+📧 ismail.yusifli86@gmail.com · [LinkedIn](https://linkedin.com/in/ismail-yusifli) · [Portfolio](https://yusifli-portfolio.vercel.app)
 
-## Engineering decisions I can walk you through
+---
 
-The school platform is private, so here is what it does and why, instead of a link:
+## How I build: decisions from a production system
 
-- **Balance debits can't double-spend.** Two admins marking the same lesson at the same moment must not charge twice. Debits run in `SERIALIZABLE` transactions with `SELECT … FOR UPDATE` on the balance row, so concurrent writes serialize or retry instead of corrupting the ledger.
-- **A payment is credited once, and only if it's real.** The YooKassa webhook handler checks a timing-safe HMAC and an IP allowlist, writes an idempotency key under a unique constraint (a duplicate delivery hits `P2002` and is ignored), then re-fetches the payment from the provider's API before changing any state. The webhook body is never trusted on its own.
-- **Login doesn't leak who has an account.** Unknown emails still pay the cost of a dummy bcrypt compare, so response time is the same either way; rate limits live in the database and survive restarts.
-- **Paid video stays paid.** Every presigned storage URL and every embed from 6 video providers passes a per-request access check against the student's enrollment.
-- **Business rules are tested as rules.** 426 integration tests, including 24 business-invariant checks on billing and payroll. Strict TypeScript, zero `tsc` errors.
+The school platform's code is private. These are the decisions I'm happy to walk through line by line on a call.
+
+| Problem | What I did |
+|---|---|
+| Two staff members marking the same lesson at the same moment must never charge a student twice | Balance debits run in `SERIALIZABLE` transactions with a `SELECT … FOR UPDATE` lock on the student row; a conflicting write waits or is rejected, never applied twice |
+| A payment webhook can be forged, replayed or delivered twice | Timing-safe token check and the provider's IP allowlist; a unique idempotency key turns a duplicate delivery into a no-op (`P2002`); the payment is re-fetched from the provider's API before any balance changes |
+| Login timing can reveal which emails have accounts | Unknown emails still run a bcrypt compare against a dummy hash, so both paths cost the same; login rate limits live in Postgres and survive restarts |
+| Paid lessons must not leak through shared links | Lesson content is served only after a per-request enrollment check; storage access goes through short-lived presigned URLs |
+| Billing and payroll rules break silently | 1,495 automated tests across 194 files, plus a 24-check invariant audit over billing and payroll data |
+
+**Scale of that codebase:** ~80K lines of TypeScript and Python, 43 data models, 28 migrations, three apps (landing, CRM, LMS) behind one edge proxy with cross-subdomain SSO.
+
+---
 
 ## Public projects
 
-| Project | What it proves | Stack |
-|---|---|---|
-| [cleanroom](https://github.com/alt-f6/cleanroom) | An LLM trading agent that stays safe even when its reading model is fully hijacked: the model has no tools, and the trade/veto decision is deterministic code. 0 of 15 hardened injection attacks got through; 53 tests. Built for the Alpaca × lablab.ai AI Trading Agents hackathon. | Python, FastAPI, Gemini, Next.js |
-| [luxury-beauty-booking](https://github.com/alt-f6/luxury-beauty-booking) | Mobile-first booking app for a hair-colorist studio, with Telegram notifications | Next.js 15, TypeScript, Tailwind v4 |
+### [cleanroom](https://github.com/alt-f6/cleanroom) — an AI trading agent that survives prompt injection
+Most defenses try to *detect* malicious text. cleanroom makes a successful injection useless instead: the only LLM in the pipeline has **no tools**, and the decision to trade or veto is **deterministic code** checking validated fields against market data. In the project's own benchmark, **0 of 15** hardened injection attacks produced an order, with 53 passing tests. Built for the Alpaca × lablab.ai AI Trading Agents hackathon.
+`Python` `FastAPI` `Gemini` `Next.js`
+
+### [luxury-beauty-booking](https://github.com/alt-f6/luxury-beauty-booking) — a live booking funnel for a Baku hair studio
+Three-step mobile booking flow in Azerbaijani and Russian: the client lands in a prefilled WhatsApp chat, the studio gets an instant Telegram notification.
+`Next.js 16` `React 19` `TypeScript` `Tailwind v4`
+
+---
 
 ## Stack
 
@@ -30,11 +45,4 @@ The school platform is private, so here is what it does and why, instead of a li
 **Infra:** Docker, Ubuntu VPS, Caddy, systemd, Git
 **Testing:** Vitest, pytest
 
-## Contact
-
-- Email: ismail.yusifli86@gmail.com
-- LinkedIn: [linkedin.com/in/ismail-yusifli](https://linkedin.com/in/ismail-yusifli)
-- Portfolio: [yusifli-portfolio.vercel.app](https://yusifli-portfolio.vercel.app)
-- Telegram: [@flames_8](https://t.me/flames_8)
-
-English C1 · Russian native · Azerbaijani conversational. Off the clock: competitive ice hockey.
+English C1 · Russian native · Azerbaijani conversational · Telegram [@flames_8](https://t.me/flames_8) · Off the clock: competitive ice hockey
